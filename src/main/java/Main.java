@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static final EntityManager em =
-            Persistence.createEntityManagerFactory("default").createEntityManager();
     private static final EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -70,7 +68,7 @@ public class Main {
         scanner.nextLine(); // Limpiar el buffer
 
         System.out.print("Nº Departamento: ");
-        empleado.setDeptNo(em.find(Departamento.class, Short.valueOf(scanner.nextLine())));
+        empleado.setDeptNo(empleadoDAO.obtenerDepartamento(Short.valueOf(scanner.nextLine())));
 
         empleadoDAO.create(empleado);
         System.out.println("Empleado creado exitosamente.");

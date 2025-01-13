@@ -1,3 +1,4 @@
+import entidades.Departamento;
 import entidades.Empleado;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -66,5 +67,10 @@ public class EmpleadoDAO {
             e.printStackTrace();
         }
     }
+
+    public Departamento obtenerDepartamento(short deptNo) {
+        return entityManager.find(Departamento.class, deptNo);
+    }
+
 }
 
